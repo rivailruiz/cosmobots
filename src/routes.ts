@@ -9,6 +9,8 @@ import { listGroupsController } from './useCases/ListGroup';
 import { deleteGroupController } from './useCases/DeleteGroup';
 import { updateGroupsController } from './useCases/UpdateGroup';
 
+import { listUsersByGroupIdController } from './useCases/ListUsersByGroupId';
+
 // const usersController = require('./controllers/usersController');
 // const groupsController = require('./controllers/groupsController');
 const router = express.Router();
@@ -17,6 +19,10 @@ const router = express.Router();
 //USERS
 router.get('/api/users', async (req: Request, res: Response) => {
   await listUsersController.handle(req, res);
+})
+
+router.get('/api/users/group/:group_id', async (req: Request, res: Response) => {
+  await listUsersByGroupIdController.handle(req, res);
 })
 
 router.post('/api/user', async (req: Request, res: Response) => {

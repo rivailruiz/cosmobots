@@ -3,6 +3,12 @@ import { IUsersRepository } from "../IUsersRepository";
 import { pool } from "../../services/db";
 
 export class PostgreesUsersRepository implements IUsersRepository {
+    
+    async ListByGroupId(groupId: string): Promise<void> {
+        const users = await pool.query('SELECT * FROM users where "groupId" = $1', [groupId]);
+        return users.rows;
+    }
+
     async findByEmail(email: string): Promise<User> {
         const user = await pool.query('SELECT * FROM users WHERE email = $1 limit 1', [email]);
         const resp = Object.keys(user.rows).length !== 0 ? user.rows : false;

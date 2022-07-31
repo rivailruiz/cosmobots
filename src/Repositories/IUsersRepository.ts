@@ -6,5 +6,6 @@ export interface IUsersRepository {
     Create(user: User): Promise<void>;
     Update(user: User): Promise<User>;
     Delete(user: User): Promise<void>;
+    ListByGroupId(groupId: string): Promise<void>;
     List(): Promise<void>;
 }

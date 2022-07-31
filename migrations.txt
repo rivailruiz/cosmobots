@@ -1,0 +1,30 @@
+CREATE EXTENSION "uuid-ossp";
+
+
+CREATE TABLE users (
+  "userId" UUID NOT NULL DEFAULT uuid_generate_v4(),
+  "accountId" UUID NOT NULL DEFAULT uuid_generate_v4(),
+  "firstName" VARCHAR NOT NULL,
+  "lastName" VARCHAR NOT NULL,
+  "email" VARCHAR NOT NULL,
+  "groupId" UUID
+);
+
+CREATE TABLE groups (
+  "group_id" UUID NOT NULL DEFAULT uuid_generate_v4(),
+  "group_name" VARCHAR NOT NULL,
+  "group_description" text
+);
+
+INSERT INTO users ("firstName", "email",  "lastName")
+  VALUES ('Jerry', 'jerry@example.com', 'Thomas'), ('George', 'george@example.com', 'Orwell');
+
+INSERT INTO groups (group_name,  group_description)
+  VALUES 
+    ('Support Agents', ''), 
+    ('Bot Builders', ''), 
+    ('Bot Admins', ''); 
+
+
+
+

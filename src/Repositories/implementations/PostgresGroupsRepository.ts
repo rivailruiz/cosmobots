@@ -5,8 +5,8 @@ import { pool } from "../../services/db";
 export class PostgreesGroupsRepository implements IGroupsRepository {
 
     async findById(groupId: string): Promise<Group> {
-        const user = await pool.query('SELECT * FROM groups WHERE "group_id" = $1', [groupId]);
-        const resp = Object.keys(user.rows).length !== 0 ? user.rows[0] : false;
+        const group = await pool.query('SELECT * FROM groups WHERE "group_id" = $1', [groupId]);
+        const resp = Object.keys(group.rows).length !== 0 ? group.rows[0] : false;
         return resp;
     }
 
@@ -28,8 +28,8 @@ export class PostgreesGroupsRepository implements IGroupsRepository {
         )
     }
 
-    async Delete(user: Group): Promise<void> {
-        const query = await pool.query('DELETE FROM users WHERE "userId" = $1', [user]);
+    async Delete(group: Group): Promise<void> {
+        const query = await pool.query('DELETE FROM groups WHERE "group_id" = $1', [group.group_id]);
     }
 
     async List(): Promise<void> {

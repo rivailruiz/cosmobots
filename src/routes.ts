@@ -6,6 +6,7 @@ import { deleteUserController } from './useCases/DeleteUser';
 
 import { createGroupsController } from './useCases/CreateGroup';
 import { listGroupsController } from './useCases/ListGroup';
+import { deleteGroupController } from './useCases/DeleteGroup';
 
 // const usersController = require('./controllers/usersController');
 // const groupsController = require('./controllers/groupsController');
@@ -47,9 +48,9 @@ router.post('/api/group', async (req: Request, res: Response) => {
 //   await groupsController.update(req, res);
 // })
 
-// router.delete('/api/group/:group_id', async (req: Request, res: Response) => {
-//   await groupsController.remove(req, res);
-// })
+router.delete('/api/group/:group_id', async (req: Request, res: Response) => {
+  await deleteGroupController.handle(req, res);
+})
 
 
 

@@ -15,17 +15,9 @@ export class PostgreesGroupsRepository implements IGroupsRepository {
         return;
     }
 
-    async Update(user: Group): Promise<Group> {
-        return await pool.query(
-            'UPDATE users SET "firstName" = $1, "lastName" = $2, email = $3, "groupId" = $4 WHERE "userId" = $5',
-            [user],
-            (error: any, results: any) => {
-                if (error) {
-                    throw error
-                }
-                return true
-            }
-        )
+    async Update(group: Group): Promise<Group> {
+        const query = await pool.query('UPDATE groups SET "group_name" = $1, "group_description" = $2 WHERE "group_id" = $3', [group.group_name, group.group_description, group.group_id]);
+        return query;
     }
 
     async Delete(group: Group): Promise<void> {

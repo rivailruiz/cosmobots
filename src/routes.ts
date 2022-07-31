@@ -11,10 +11,7 @@ import { updateGroupsController } from './useCases/UpdateGroup';
 
 import { listUsersByGroupIdController } from './useCases/ListUsersByGroupId';
 
-// const usersController = require('./controllers/usersController');
-// const groupsController = require('./controllers/groupsController');
 const router = express.Router();
-
 
 //USERS
 router.get('/api/users', async (req: Request, res: Response) => {
@@ -38,9 +35,6 @@ router.delete('/api/user/:userid', async (req: Request, res: Response) => {
 })
 
 
-
-
-
 // //GROUPS
 
 router.get('/api/groups', async (req: Request, res: Response) => {
@@ -61,4 +55,4 @@ router.delete('/api/group/:group_id', async (req: Request, res: Response) => {
 
 
 
-export { router as MainRouter }
+export { router as MainRouter } 

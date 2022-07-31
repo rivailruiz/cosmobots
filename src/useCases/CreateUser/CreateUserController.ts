@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { CreateGroupUseCase } from "./CreateUserUseCases";
+
 export class CreateUserController {
 
   constructor(

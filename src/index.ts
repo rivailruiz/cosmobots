@@ -2,16 +2,12 @@ import express from 'express';
 import { json } from 'body-parser';
 import { MainRouter } from './routes';
 
-const Pool = require('pg').Pool
-
 require('dotenv').config()
 
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
 app.use(MainRouter);
-
-
 
 
 app.listen(3000, () => {

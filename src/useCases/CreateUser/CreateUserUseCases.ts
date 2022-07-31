@@ -2,7 +2,7 @@ import { User } from "../../entities/User";
 import { IUsersRepository } from "../../Repositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
-export class CreateUserUseCase {
+export class CreateGroupUseCase {
 
 
     constructor(

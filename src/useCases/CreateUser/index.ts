@@ -1,10 +1,10 @@
 import { PostgreesUsersRepository } from "../../Repositories/implementations/PostgresUsersRepository";
 import { CreateUserController } from "./CreateUserController";
-import { CreateUserUseCase } from "./CreateUserUseCases";
+import { CreateGroupUseCase } from "./CreateUserUseCases";
 
 const postgreesUsersRepository = new PostgreesUsersRepository();
 
-const createUserUseCase = new CreateUserUseCase(
+const createUserUseCase = new CreateGroupUseCase(
     postgreesUsersRepository
 );
 

@@ -4,8 +4,11 @@ import { updateUserController } from './useCases/UpdateUser';
 import { listUsersController } from './useCases/ListUsers';
 import { deleteUserController } from './useCases/DeleteUser';
 
-const usersController = require('./controllers/usersController');
-const groupsController = require('./controllers/groupsController');
+import { createGroupsController } from './useCases/CreateGroup';
+import { listGroupsController } from './useCases/ListGroup';
+
+// const usersController = require('./controllers/usersController');
+// const groupsController = require('./controllers/groupsController');
 const router = express.Router();
 
 
@@ -30,23 +33,23 @@ router.delete('/api/user/:userid', async (req: Request, res: Response) => {
 
 
 
-//GROUPS
+// //GROUPS
 
 router.get('/api/groups', async (req: Request, res: Response) => {
-  await groupsController.get(req, res);
+  await listGroupsController.handle(req, res);
 })
 
 router.post('/api/group', async (req: Request, res: Response) => {
-  await groupsController.create(req, res);
+  await createGroupsController.handle(req, res);
 })
 
-router.put('/api/group/:group_id', async (req: Request, res: Response) => {
-  await groupsController.update(req, res);
-})
+// router.put('/api/group/:group_id', async (req: Request, res: Response) => {
+//   await groupsController.update(req, res);
+// })
 
-router.delete('/api/group/:group_id', async (req: Request, res: Response) => {
-  await groupsController.remove(req, res);
-})
+// router.delete('/api/group/:group_id', async (req: Request, res: Response) => {
+//   await groupsController.remove(req, res);
+// })
 
 
 

@@ -15,13 +15,9 @@ export class PostgreesUsersRepository implements IUsersRepository {
         return resp;
     }
 
-    async Create(user: User): Promise<User> {
-        return await pool.query('INSERT INTO users ("firstName", "lastName", email, "groupId") VALUES ($1, $2, $3, $4) RETURNING *', [user.firstName, user.lastName, user.email, user.groupId], (error: any, results: any) => {
-            if (error) {
-                throw error
-            }
-            return true
-        })
+    async Create(user: User): Promise<void> {
+        const query = await pool.query('INSERT INTO users ("firstName", "lastName", email, "groupId") VALUES ($1, $2, $3, $4) RETURNING *', [user.firstName, user.lastName, user.email, user.groupId])
+        return;
     }
 
     async Update(user: User): Promise<User> {

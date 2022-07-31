@@ -7,7 +7,6 @@ export class ListUsersUseCase {
         private usersRepository: IUsersRepository
     ) { }
 
-
     async execute() {
         const userList = await this.usersRepository.List();
         return userList;

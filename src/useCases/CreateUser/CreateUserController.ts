@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { CreateUserUseCase } from "./CreateUserUseCases";
+import { CreateGroupUseCase } from "./CreateUserUseCases";
 export class CreateUserController {
 
   constructor(
-    private createUserUseCase: CreateUserUseCase,
+    private createUserUseCase: CreateGroupUseCase,
   ) { }
   async handle(req: Request, res: Response): Promise<Response> {
     const { firstName, lastName, email, groupId } = req.body;

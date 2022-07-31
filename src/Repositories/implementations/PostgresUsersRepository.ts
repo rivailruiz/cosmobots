@@ -11,7 +11,7 @@ export class PostgreesUsersRepository implements IUsersRepository {
 
     async findById(userId: string): Promise<User> {
         const user = await pool.query('SELECT * FROM users WHERE "userId" = $1', [userId]);
-        const resp = Object.keys(user.rows).length !== 0 ? user.rows : false;
+        const resp = Object.keys(user.rows).length !== 0 ? user.rows[0] : false;
         return resp;
     }
 
@@ -37,13 +37,8 @@ export class PostgreesUsersRepository implements IUsersRepository {
         )
     }
 
-    async Delete(user: User): Promise<User> {
-        return pool.query('DELETE FROM users WHERE userid = $1', [user.userId], (error: any, results: any) => {
-            if (error) {
-                throw error
-            }
-            return (`User deleted with ID: ${user.userId}`);
-        })
+    async Delete(user: User): Promise<void> {
+        const query = await pool.query('DELETE FROM users WHERE "userId" = $1', [user.userId]);
     }
 
     async List(): Promise<void> {

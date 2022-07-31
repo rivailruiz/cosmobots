@@ -4,12 +4,12 @@ import { DeleteUserUseCase } from "./DeleteUserUseCases";
 
 const postgreesUsersRepository = new PostgreesUsersRepository();
 
-const createUserUseCase = new DeleteUserUseCase(
+const deleteUserUseCase = new DeleteUserUseCase(
     postgreesUsersRepository
 );
 
-const createUserController = new DeleteUserController(
-    createUserUseCase
+const deleteUserController = new DeleteUserController(
+    deleteUserUseCase
 );
 
-export { createUserUseCase, createUserController }
+export { deleteUserUseCase, deleteUserController }

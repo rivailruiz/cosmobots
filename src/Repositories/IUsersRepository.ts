@@ -5,6 +5,6 @@ export interface IUsersRepository {
     findById(userId: string): Promise<User>;
     Create(user: User): Promise<User>;
     Update(user: User): Promise<User>;
-    Delete(user: User): Promise<User>;
+    Delete(user: User): Promise<void>;
     List(): Promise<void>;
 }

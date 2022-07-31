@@ -4,18 +4,16 @@ import { IDeleteRequestDTO } from "./DeleteUserDTO";
 
 export class DeleteUserUseCase {
 
-
     constructor(
         private usersRepository: IUsersRepository
     ) { }
 
-
     async execute(data: IDeleteRequestDTO) {
-        const userAlreadyExists = await this.usersRepository.findByEmail(data.email);
-        if (userAlreadyExists) {
-            throw new Error("User already exists");
+        const userExists = await this.usersRepository.findById(data.userId);
+        if (!userExists) {
+            throw new Error("User not found.");
         }
-        const user = new User(data);
-        await this.usersRepository.Create(user);
+        const user = new User(userExists);
+        await this.usersRepository.Delete(user);
     }
 }
